@@ -894,7 +894,7 @@ def trainIters(encoder, decoder, dataloader, epochs, print_every_n_batches=100, 
 
 # Set hyperparameters and construct dataloader
 hidden_size = 256
-batch_size = 150
+batch_size = 48
 dataloader = DataLoader(french_english_dataset, batch_size=batch_size,
                         shuffle=True, num_workers=4)
 
