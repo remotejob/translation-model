@@ -55,7 +55,7 @@ import os.path
 import time
 import math
 import random
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import string
 
 # Use gpu if available
@@ -941,23 +941,23 @@ learning_rate = 0.0001
 encoder_gru.train() # Set model to training mode
 decoder_gru.train() # Set model to training mode
 
-gru_losses = trainIters(encoder_gru, decoder_gru, dataloader, epochs=2, learning_rate = learning_rate)
+# gru_losses = trainIters(encoder_gru, decoder_gru, dataloader, epochs=2, learning_rate = learning_rate)
 
-np.save('data/lstm2_losses.npy', lstm_losses)
+# np.save('data/lstm2_losses.npy', lstm_losses)
 
-np.save('data/gru2_losses.npy', gru_losses)
+# np.save('data/gru2_losses.npy', gru_losses)
 
-lstm_losses = np.load('data/lstm1_losses.npy')
-gru_losses = np.load('data/gru1_losses.npy')
+# lstm_losses = np.load('data/lstm1_losses.npy')
+# gru_losses = np.load('data/gru1_losses.npy')
 
-plt.plot(lstm_losses)
-plt.plot(gru_losses)
+# plt.plot(lstm_losses)
+# plt.plot(gru_losses)
 
-plt.title('Loss Plots for Dataset 1; Trained on 1 Epoch')
-plt.xlabel('Batches')
-plt.xticks([0,20,40,60,80],[0,2000,4000,6000,8000])
-plt.ylabel('Loss per Batch, MSE')
-plt.legend(['LSTM', 'GRU'])
+# plt.title('Loss Plots for Dataset 1; Trained on 1 Epoch')
+# plt.xlabel('Batches')
+# plt.xticks([0,20,40,60,80],[0,2000,4000,6000,8000])
+# plt.ylabel('Loss per Batch, MSE')
+# plt.legend(['LSTM', 'GRU'])
 
 # Save the model weights to continue later
 torch.save(encoder_lstm.state_dict(), 'models/encoder0_lstm.pth')
@@ -1036,14 +1036,14 @@ for index in output_list:
         print(output)
         break
 
-fig = plt.figure()
-plt.title('LSTM Model Attention\n\n\n\n\n')
-ax = fig.add_subplot(111)
-ax.matshow(attn[:len(output.split()), :input_len])
-ax.set_xticks(np.arange(0,input_len, step=1))
-ax.set_yticks(np.arange(0,len(output.split())))
-ax.set_xticklabels(batch['french_sentence'][11].split(), rotation=90)
-ax.set_yticklabels(output.split()+['</s>'])
+# fig = plt.figure()
+# plt.title('LSTM Model Attention\n\n\n\n\n')
+# ax = fig.add_subplot(111)
+# ax.matshow(attn[:len(output.split()), :input_len])
+# ax.set_xticks(np.arange(0,input_len, step=1))
+# ax.set_yticks(np.arange(0,len(output.split())))
+# ax.set_xticklabels(batch['french_sentence'][11].split(), rotation=90)
+# ax.set_yticklabels(output.split()+['</s>'])
 
 
 output = ''
@@ -1057,14 +1057,14 @@ for index in gru_output_list:
         print(output)
         break
         
-fig = plt.figure()
-plt.title('GRU Model Attention\n\n\n\n\n')
-ax2 = fig.add_subplot(111)
-ax2.matshow(gru_attn[:len(output.split()), :input_len])
-ax2.set_xticks(np.arange(0,input_len, step=1))
-ax2.set_yticks(np.arange(0,len(output.split())))
-ax2.set_xticklabels(batch['french_sentence'][11].split(), rotation=90)
-ax2.set_yticklabels(output.split()+['</s>'])
+# fig = plt.figure()
+# plt.title('GRU Model Attention\n\n\n\n\n')
+# ax2 = fig.add_subplot(111)
+# ax2.matshow(gru_attn[:len(output.split()), :input_len])
+# ax2.set_xticks(np.arange(0,input_len, step=1))
+# ax2.set_yticks(np.arange(0,len(output.split())))
+# ax2.set_xticklabels(batch['french_sentence'][11].split(), rotation=90)
+# ax2.set_yticklabels(output.split()+['</s>'])
 
 
 
