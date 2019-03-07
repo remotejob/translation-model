@@ -754,7 +754,7 @@ decoder_lstm = AttnDecoderLSTM(hidden_size, en_vectors, seq_length).to(device)
 encoder_gru = EncoderBiGRU(hidden_size, fi_vectors).to(device)
 decoder_gru = AttnDecoderGRU(hidden_size, en_vectors, seq_length).to(device)
 
-from_scratch = True # Set to False if you have saved weights and want to load them
+from_scratch = False # Set to False if you have saved weights and want to load them
 
 if not from_scratch:
     # Load weights from earlier model
