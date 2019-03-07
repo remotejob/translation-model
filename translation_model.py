@@ -146,8 +146,8 @@ else:
 en_word2idx = {word:index for index, word in enumerate(en_words)}
 
 hemophilia_idx = en_word2idx['valtava']
-print('index for word hemophilia:', hemophilia_idx, 
-      '\nvector for word hemophilia:\n',en_vectors[hemophilia_idx][:10])
+print('index for word valtava:', hemophilia_idx, 
+      '\nvector for word valtava:\n',en_vectors[hemophilia_idx][:10])
 
 """The word embedding for hemophilia matches the one read from the file, so it looks like everything worked properly.
 
@@ -743,7 +743,7 @@ def trainIters(encoder, decoder, dataloader, epochs, print_every_n_batches=100, 
 
 # Set hyperparameters and construct dataloader
 hidden_size = 256
-batch_size = 36
+batch_size = 40
 dataloader = DataLoader(finnish_english_dataset, batch_size=batch_size,
                         shuffle=True, num_workers=4)
 
@@ -780,7 +780,7 @@ learning_rate = 0.0001
 encoder_lstm.train() # Set model to training mode
 decoder_lstm.train() # Set model to training mode
 
-lstm_losses_cont = trainIters(encoder_lstm, decoder_lstm, dataloader, epochs=3, learning_rate = learning_rate)
+lstm_losses_cont = trainIters(encoder_lstm, decoder_lstm, dataloader, epochs=30, learning_rate = learning_rate)
 
 
 # For dataset 1, models were trained for 3 epochs
@@ -790,7 +790,7 @@ learning_rate = 0.0001
 encoder_gru.train() # Set model to training mode
 decoder_gru.train() # Set model to training mode
 
-gru_losses = trainIters(encoder_gru, decoder_gru, dataloader, epochs=3, learning_rate = learning_rate)
+gru_losses = trainIters(encoder_gru, decoder_gru, dataloader, epochs=30, learning_rate = learning_rate)
 
 # Save the model weights to continue later
 torch.save(encoder_lstm.state_dict(), 'models/encoder0_lstm.pth')
