@@ -145,7 +145,7 @@ else:
 
 en_word2idx = {word:index for index, word in enumerate(en_words)}
 
-hemophilia_idx = en_word2idx['hemophilia']
+hemophilia_idx = en_word2idx['valtava']
 print('index for word hemophilia:', hemophilia_idx, 
       '\nvector for word hemophilia:\n',en_vectors[hemophilia_idx][:10])
 
