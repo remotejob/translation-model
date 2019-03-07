@@ -759,7 +759,7 @@ from_scratch = False # Set to False if you have saved weights and want to load t
 if not from_scratch:
     # Load weights from earlier model
     encoder_lstm_state_dict = torch.load('models/encoder0_lstm.pth')
-    decoder_lstm_state_dict = torch.load('gdrive/My Drive/models/decoder0_lstm.pth')
+    decoder_lstm_state_dict = torch.load('models/decoder0_lstm.pth')
 
     encoder_lstm.load_state_dict(encoder_lstm_state_dict)
     decoder_lstm.load_state_dict(decoder_lstm_state_dict)
