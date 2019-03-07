@@ -59,7 +59,7 @@ max_fi_length = 0
 for sentence in finnish_sentences:
     length = len(sentence.split())
     max_fi_length = max(max_fi_length, length)
-print("The longest french sentence in our dataset is:", max_fi_length)
+print("The longest finnish sentence in our dataset is:", max_fi_length)
 
 max_seq_length = max(max_fi_length, max_en_length) + 1
 seq_length = max_seq_length
@@ -107,18 +107,7 @@ sorted_en_words= sorted(en_word_count.items(), key=get_value, reverse=True)
 
 sorted_en_words[-10:]
 
-"""### Using Word Embeddings
 
-Here we are building an embedding matrix of pretrained word vectors. The word embeddings used here were downloaded from the [fastText repository](https://github.com/facebookresearch/fastText/blob/master/pretrained-vectors.md). These embeddings have 300 dimensions. To start we will add a few token embeddings for our specific case. We want a token to signal the start of the sentence, A token for words that we do not have an embedding for, and a token to pad sentences so all the sentences we use have the same length. This will allow us to train the model on batches of sentences that are different lengths, rather than one at a time.
-
-After this step we will have a dictionary and an embedding matrix for each language. The dictionary will map words to an index value in the embedding matrix where its' corresponding embedding vector is stored.
-
-#### Load Embeddings for the English data
-"""
-
-# The data file containing the embeddings is very large so once we have the embeddings we want
-# we will save them as a numpy array. This way we can load this much faster then having to re read from
-# the large embedding file
 if os.path.exists('data/en_words.npy') and os.path.exists('data/en_vectors.npy'):
     en_words = np.load('data/en_words.npy')
     en_vectors = np.load('data/en_vectors.npy')
@@ -754,7 +743,7 @@ def trainIters(encoder, decoder, dataloader, epochs, print_every_n_batches=100, 
 
 # Set hyperparameters and construct dataloader
 hidden_size = 256
-batch_size = 150
+batch_size = 75
 dataloader = DataLoader(finnish_english_dataset, batch_size=batch_size,
                         shuffle=True, num_workers=4)
 
