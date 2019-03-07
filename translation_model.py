@@ -17,7 +17,7 @@ import string
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-with open('data/fin.txt', "r") as f:
+with open('data/seq2seqfinbot.txt', "r") as f:
     data1 = f.read()
 
 pairs = data1.split('\n')
@@ -122,7 +122,7 @@ else:
     en_vectors = list(np.random.uniform(-0.1, 0.1, (3, 300)))
     en_vectors[0] *= 0 # make the padding vector zeros
 
-    with open('data/wiki.en.vec', "r") as f:
+    with open('data/wiki.fi.vec', "r") as f:
         f.readline()
         for _ in range(100000):
             en_vecs = f.readline()
@@ -780,7 +780,7 @@ learning_rate = 0.0001
 encoder_lstm.train() # Set model to training mode
 decoder_lstm.train() # Set model to training mode
 
-lstm_losses_cont = trainIters(encoder_lstm, decoder_lstm, dataloader, epochs=2, learning_rate = learning_rate)
+lstm_losses_cont = trainIters(encoder_lstm, decoder_lstm, dataloader, epochs=3, learning_rate = learning_rate)
 
 
 # For dataset 1, models were trained for 3 epochs
@@ -790,7 +790,7 @@ learning_rate = 0.0001
 encoder_gru.train() # Set model to training mode
 decoder_gru.train() # Set model to training mode
 
-gru_losses = trainIters(encoder_gru, decoder_gru, dataloader, epochs=2, learning_rate = learning_rate)
+gru_losses = trainIters(encoder_gru, decoder_gru, dataloader, epochs=3, learning_rate = learning_rate)
 
 # Save the model weights to continue later
 torch.save(encoder_lstm.state_dict(), 'models/encoder0_lstm.pth')
