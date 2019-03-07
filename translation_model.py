@@ -17,7 +17,7 @@ import string
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
-with open('gdrive/My Drive/fin.txt', "r") as f:
+with open('data/fin.txt', "r") as f:
     data1 = f.read()
 
 pairs = data1.split('\n')
